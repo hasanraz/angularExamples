@@ -1,0 +1,5 @@
+<div class="navbar-container">
+    <div class="navbar" *ngFor="let nav of navbarTitle" (click)="navigateToGivenPath(nav.link)">
+        <span>{{nav.title}}</span>
+    </div>
+</div>

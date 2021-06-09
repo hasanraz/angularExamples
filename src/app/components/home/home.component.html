@@ -1,0 +1,13 @@
+<div class="home">
+    <div class="header">
+        <h1>{{headerTitle}}</h1>
+    </div>
+    <div>
+        <input type="number" placeholder="first number" [(ngModel)]="firstNumber" />
+        <input type="number" placeholder="second number" [(ngModel)]="secondNumber" />
+        <button (click)="numberSum()">Add</button>
+        <span>Total Sum: {{sum}}</span>
+        <input type="text" placeholder="Name" [(ngModel)]="name" />
+        <span>{{utilsService.getName(name)}}</span>
+    </div>
+</div>
