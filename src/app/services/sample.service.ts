@@ -7,6 +7,7 @@ export class SampleService {
 
   private sampleData: any;
   public samplePublicData: any;
+  private sum: number;
 
   constructor() { }
 
@@ -27,6 +28,14 @@ export class SampleService {
   }
 
   public getSum(fnumber: number, snumber: number) {
-    return fnumber + snumber;
+    this.sum = fnumber + snumber;
+    return this.sum;
+  }
+
+  public getCalculatedSum() {
+    if(!this.sum) {
+      this.sum = 0;
+    }
+    return this.sum;
   }
 }

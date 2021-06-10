@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterContentChecked, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { SampleService } from './../../services/sample.service';
 import { UtilsService } from './../../services/utils.service';
 
@@ -17,6 +17,8 @@ export class HomeComponent implements OnInit {
   @ViewChild('firstNum')firstNum: ElementRef;
   @ViewChild('secondNum')secondNum: ElementRef;
   public name = "king";
+  showSum = true;
+  iArray = ['1','2','3','4'];
 
   constructor(private sampleService: SampleService,
     public utilsService: UtilsService) { }
@@ -27,6 +29,10 @@ export class HomeComponent implements OnInit {
 
   numberSum() {
     this.sum = this.sampleService.getSum(this.firstNumber, this.secondNumber);
+  }
+
+  updateName(name) {
+    this.name = name;
   }
 
 }

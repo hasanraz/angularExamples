@@ -12,6 +12,7 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { ProfileComponent } from './components/profile/profile.component';
 import { SettingComponent } from './components/setting/setting.component';
 import { SampleService } from './services/sample.service';
+import { HomeChildComponent } from './components/home-child/home-child.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { SampleService } from './services/sample.service';
     ContactComponent,
     RegistrationComponent,
     ProfileComponent,
-    SettingComponent
+    SettingComponent,
+    HomeChildComponent
   ],
   imports: [
     BrowserModule,

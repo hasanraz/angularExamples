@@ -2,12 +2,13 @@
     <div class="header">
         <h1>{{headerTitle}}</h1>
     </div>
-    <div>
+    <div *ngFor="let i of iArray">
         <input type="number" placeholder="first number" [(ngModel)]="firstNumber" />
         <input type="number" placeholder="second number" [(ngModel)]="secondNumber" />
-        <button (click)="numberSum()">Add</button>
-        <span>Total Sum: {{sum}}</span>
+        <button [ngClass]="sum > 0? 'sumButton': 'zeroButton'" (click)="numberSum()">Add</button>
+        <span *ngIf="showSum">Total Sum: {{sum}}</span>
         <input type="text" placeholder="Name" [(ngModel)]="name" />
-        <span>{{utilsService.getName(name)}}</span>
+        <span [ngStyle]="{'color':'red'}">{{utilsService.getName(name)}}</span>
     </div>
+    <app-home-child [name]="name" (updateName)="updateName($event)"></app-home-child>
 </div>
