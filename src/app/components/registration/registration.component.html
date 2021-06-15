@@ -1,1 +1,8 @@
-<p>registration works!</p>
+<form [formGroup]="registrationForm" novalidate (ngSubmit)="onSubmit()">
+    <input formControlName="firstName"  placeholder="first name" [ngClass]="registrationForm.controls.firstName.valid?'': 'errorClass'" />
+    <input formControlName="lastName" placeholder="last name" />
+    <input formControlName="email" placeholder="email" />
+    <input formControlName="phoneNumber" placeholder="Phone number" />
+    <button type="submit">Register</button>
+    <app-error [errorMsg]="errorMsg" *ngIf="ifErrorOccured"></app-error>
+</form>

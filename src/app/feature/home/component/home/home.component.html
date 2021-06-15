@@ -1,0 +1,17 @@
+<div class="home">
+    <app-banner></app-banner>
+    <app-error></app-error>
+    <div class="header">
+        <h1>{{headerTitle | hellopipe}}</h1>
+    </div>
+    <div>
+        <input  type="number" placeholder="first number" [(ngModel)]="firstNumber" />
+        <input  type="number" placeholder="second number" [(ngModel)]="secondNumber" />
+        <button [ngClass]="sum > 0? 'sumButton': 'zeroButton'" (click)="numberSum()">Add</button>
+        <span *ngIf="showSum">Total Sum: {{sum }}</span>
+        <input type="text" placeholder="Name" [(ngModel)]="name" />
+        <span [ngStyle]="{'color':'red'}">{{utilsService.getName(name)}}</span>
+        <span>Amount : {{amount }}</span>
+    </div>
+    <app-home-child [name]="name" (updateName)="updateName($event)"></app-home-child>
+</div>
