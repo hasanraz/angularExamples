@@ -1,61 +1,75 @@
-import { AfterViewChecked, AfterViewInit, Component, OnChanges, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { VaccinationService } from 'src/app/services/vaccination.service';
-import { VacchildComponent } from '../vacchild/vacchild.component';
+import { VaccinationService } from './../../services/vaccination.service';
+import { DatePipe } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-vaccination-form',
   templateUrl: './vaccination-form.component.html',
   styleUrls: ['./vaccination-form.component.scss']
 })
-export class VaccinationFormComponent implements OnInit, OnDestroy, AfterViewInit, AfterViewChecked {
+export class VaccinationFormComponent implements OnInit, AfterViewInit {
 
   states: any;
-  stateSubsciption: Subscription;
-  districtSubsciption: Subscription;
-  selectedState: any;
+  vacForm: FormGroup;
+  vacDistForm: FormGroup;
+  vacDateForm: FormGroup;
+  statesSubscription: Subscription;
+  districtSubscription: Subscription;
   districts: any;
+  districtAvail = false;
+  appointmentDate: any;
   selectedDistrict: any;
-  showForm = false;
-  @ViewChild('vacChild')vacChild: VacchildComponent;
 
-  constructor(private vaccinationService: VaccinationService) { 
-    this.stateSubsciption = this.vaccinationService.states.subscribe((data) => {
-      this.states = data;
-    });
-    
-  }
+
+  constructor(private vaccinationService: VaccinationService,
+    private fb: FormBuilder,
+    private datePipe: DatePipe,
+    private router: Router) { }
 
   ngOnInit(): void {
-    console.log("In On Init Method");
-    this.districtSubsciption = this.vaccinationService.districts.subscribe((data) => {
-      console.log("Subscribed from On Init");
-      this.districts = data;
+    this.statesSubscription = this.vaccinationService.states.subscribe((data) => {
+      this.states = data;
     });
+    this.districtSubscription = this.vaccinationService.district.subscribe((data) => {
+      this.districts = data;
+      this.districtAvail = true;
+    });
+    this.vacForm = this.fb.group({
+      state: [null]
+      
+    });
+    this.vacDistForm = this.fb.group({
+      district: [null]
+    });
+    this.vacDateForm = this.fb.group(
+      {
+        adate: null
+      }
+    )
   }
 
   ngAfterViewInit() {
-    console.log("I am Inside View Init");
-    this.showForm = true;
+    this.states = this.vaccinationService.states;
   }
 
-  ngAfterViewChecked() {
-    console.log("I am being called from view checked");
+  submit() {
+    this.vaccinationService.getDistrict(this.vacForm.controls.state.value);
   }
 
-  ngOnDestroy() {
-
-    console.log("Component has been destroyed");
+  selectDistrict() {
+    this.selectedDistrict = this.vacDistForm.controls.district.value;
   }
 
-  submitState(stateId) {
-    this.vaccinationService.getDistrict(stateId.target.value);
-
+  selectDate() {
+    this.appointmentDate = this.datePipe.transform(this.vacDateForm.controls.adate.value, "MM-dd-yyyy");
   }
 
-  destroyComponent(ev) {
-    this.vacChild.updateHeaderText();
+  submitAppoinment() {
+    this.vaccinationService.getAppointment(this.selectedDistrict, this.appointmentDate);
+    this.router.navigate(['center']);
   }
-
 
 }

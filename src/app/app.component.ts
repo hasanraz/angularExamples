@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
 import { VaccinationService } from './services/vaccination.service';
 
 @Component({
@@ -8,20 +7,21 @@ import { VaccinationService } from './services/vaccination.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
-  title = 'Vaccination Drive In India';
-  someDataSubs: Subscription;
-  showVac = true;
+export class AppComponent implements OnInit, AfterViewInit {
 
-  constructor(private vaccinationService: VaccinationService, private router: Router) {
-    this.vaccinationService.getStates();
+  title = 'shubhamProj';
+  states: any;
+
+  constructor(private vaccinationService: VaccinationService,
+    private router: Router) {
+    this.vaccinationService.getState();
   }
 
   ngOnInit() {
-    this.someDataSubs = this.vaccinationService.someDataToTrigger.subscribe((data) => {
-      if (data) {
-        this.showVac = false;
-      }
-    });
+
+  }
+
+  ngAfterViewInit() {
+    this.router.navigate(['state']);
   }
 }
