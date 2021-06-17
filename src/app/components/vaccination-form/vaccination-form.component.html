@@ -1,0 +1,10 @@
+<div>
+<select [ngModel]="selectedState" (change)="submitState($event)">
+    <option [value]="state.state_id" *ngFor="let state of states">{{state.state_name}}</option>
+</select>
+<select [ngModel]="selectedDistrict" (change)="destroyComponent($event)">
+    <option [value]="state.district_id" *ngFor="let state of districts">{{state.district_name}}</option>
+</select>
+</div>
+<div *ngIf="showForm"><h1>Check Dom</h1></div>
+<app-vacchild *ngIf="showForm" #vacChild></app-vacchild>

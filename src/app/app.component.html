@@ -1,2 +1,4 @@
-<app-navbar></app-navbar>
-<router-outlet></router-outlet>
+<div class="header">
+  <h1 >{{title}}</h1>
+</div>
+<app-vaccination-form *ngIf="showVac"></app-vaccination-form>

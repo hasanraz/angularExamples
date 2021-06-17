@@ -1,44 +1,27 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from "@angular/common/http";
 import { AppRoutingModule } from './app-routing.module';
-import { HomeModule } from './feature/home/home.module';
-import { SharedModule } from './shared/shared.module';
 import { AppComponent } from './app.component';
-import { FirstComponent } from './first/first.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { ContactComponent } from './components/contact/contact.component';
-import { RegistrationComponent } from './components/registration/registration.component';
-import { ProfileComponent } from './components/profile/profile.component';
-import { SettingComponent } from './components/setting/setting.component';
-import { SampleService } from './services/sample.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-
-
-
+import { VaccinationFormComponent } from './components/vaccination-form/vaccination-form.component';
+import { FormsModule } from '@angular/forms';
+import { VacchildComponent } from './components/vacchild/vacchild.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FirstComponent,
-    NavbarComponent,
-    ContactComponent,
-    RegistrationComponent,
-    ProfileComponent,
-    SettingComponent
+    VaccinationFormComponent,
+    VacchildComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HomeModule,
-    SharedModule,
     BrowserAnimationsModule,
-    MatDatepickerModule
+    HttpClientModule,
+    FormsModule
   ],
-  providers: [SampleService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
