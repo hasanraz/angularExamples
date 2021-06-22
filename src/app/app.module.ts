@@ -3,38 +3,36 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { VaccinationFormComponent } from './components/vaccination-form/vaccination-form.component';
-import { HttpClientModule } from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatInputModule} from '@angular/material/input';
-import {MatButtonModule} from '@angular/material/button';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import { MatNativeDateModule } from '@angular/material/core';
-import {DatePipe} from '@angular/common';
-import { VaccenterComponent } from './components/vaccenter/vaccenter.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HomeComponent } from './home/home.component';
+import { ContactsComponent } from './contacts/contacts.component';
+import { NavComponent } from './components/nav/nav.component';
+import { NotAvailableComponent } from './components/not-available/not-available.component';
+import { SubhomeComponent } from './components/subhome/subhome.component';
+import { Subhome2Component } from './components/subhome2/subhome2.component';
+import { CaurosalComponent } from './components/caurosal/caurosal.component';
+import { TimePickerComponent } from './components/time-picker/time-picker.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
-    VaccinationFormComponent,
-    VaccenterComponent
+    HomeComponent,
+    ContactsComponent,
+    NavComponent,
+    NotAvailableComponent,
+    SubhomeComponent,
+    Subhome2Component,
+    CaurosalComponent,
+    TimePickerComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatDatepickerModule,
-    MatInputModule,
-    MatButtonModule,
-    MatFormFieldModule,
-    MatNativeDateModule,
-    BrowserAnimationsModule
+    NgbModule,
+    FormsModule
   ],
-  providers: [DatePipe],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

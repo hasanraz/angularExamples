@@ -1,27 +1,14 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { VaccinationService } from './services/vaccination.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit, AfterViewInit {
+export class AppComponent {
+  title = 'Avengers';
 
-  title = 'shubhamProj';
-  states: any;
-
-  constructor(private vaccinationService: VaccinationService,
-    private router: Router) {
-    this.vaccinationService.getState();
-  }
-
-  ngOnInit() {
-
-  }
-
-  ngAfterViewInit() {
-    this.router.navigate(['state']);
+  public getTitle() {
+    return this.title;
   }
 }

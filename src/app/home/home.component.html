@@ -1,0 +1,17 @@
+<div class="home_container">
+<app-caurosal></app-caurosal>
+<app-time-picker></app-time-picker>
+<ul ngbNav #nav="ngbNav" class="nav-tabs">
+  <li ngbNavItem>
+    <a ngbNavLink>Sub Home</a>
+    <ng-template ngbNavContent>
+        <app-subhome></app-subhome>
+    </ng-template>
+  </li>
+  <li ngbNavItem>
+    <a ngbNavLink>Sub Home 2</a>
+    <ng-template ngbNavContent><app-subhome2></app-subhome2></ng-template>
+  </li>
+</ul>
+<div [ngbNavOutlet]="nav"></div>
+</div>
