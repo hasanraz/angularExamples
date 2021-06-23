@@ -13,6 +13,10 @@ import { Subhome2Component } from './components/subhome2/subhome2.component';
 import { CaurosalComponent } from './components/caurosal/caurosal.component';
 import { TimePickerComponent } from './components/time-picker/time-picker.component';
 import { FormsModule } from '@angular/forms';
+import { SolidborderDirective } from './directives/solidborder.directive';
+import { WelcomePipe } from './pipes/welcome.pipe';
+import { SumComponent } from './components/sum/sum.component';
+import { AddService } from './service/add.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +28,10 @@ import { FormsModule } from '@angular/forms';
     SubhomeComponent,
     Subhome2Component,
     CaurosalComponent,
-    TimePickerComponent
+    TimePickerComponent,
+    SolidborderDirective,
+    WelcomePipe,
+    SumComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +39,7 @@ import { FormsModule } from '@angular/forms';
     NgbModule,
     FormsModule
   ],
-  providers: [],
+  providers: [AddService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

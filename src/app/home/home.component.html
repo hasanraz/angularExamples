@@ -1,11 +1,17 @@
-<div class="home_container">
+<div class="home_container" appSolidborder>
+<input [(ngModel)]="fontSizePx" type="number"/>
+<h1 [style.font-size.px]="fontSizePx">{{homeTitle | lowercase}} : {{todayData | date}}</h1>
+<h2 [class.boldHeader]="isBold" > {{name | welcome}}</h2>
+<img [src]="imageLink" [style.width]="label">
+<tr><td [attr.colspan]="1 + 1">One two</td></tr>
+<app-sum></app-sum>
 <app-caurosal></app-caurosal>
 <app-time-picker></app-time-picker>
 <ul ngbNav #nav="ngbNav" class="nav-tabs">
   <li ngbNavItem>
     <a ngbNavLink>Sub Home</a>
     <ng-template ngbNavContent>
-        <app-subhome></app-subhome>
+        <app-subhome [name]="name" (outputEvent)="listenerEvent($event)"></app-subhome>
     </ng-template>
   </li>
   <li ngbNavItem>
@@ -13,5 +19,5 @@
     <ng-template ngbNavContent><app-subhome2></app-subhome2></ng-template>
   </li>
 </ul>
-<div [ngbNavOutlet]="nav"></div>
+<div [ngbNavOutlet]="nav" appSolidborder></div>
 </div>

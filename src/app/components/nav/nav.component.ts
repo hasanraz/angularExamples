@@ -17,4 +17,8 @@ export class NavComponent implements OnInit {
     this.router.navigate([path]);
   }
 
+  funct() {
+    alert('Hi');
+  }
+
 }

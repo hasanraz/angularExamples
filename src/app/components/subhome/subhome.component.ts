@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-subhome',
@@ -6,6 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./subhome.component.scss']
 })
 export class SubhomeComponent implements OnInit {
+
+  @Input()name = '';
+
+  @Output() outputEvent = new EventEmitter<string>();
 
   isAvail = false;
   item = ["Button1", "Button2", "Button3"];
@@ -17,6 +21,7 @@ export class SubhomeComponent implements OnInit {
 
   changeTheHeader() {
     this.isAvail = !this.isAvail;
+    this.outputEvent.emit("msg");
   }
 
 }

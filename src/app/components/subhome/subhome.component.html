@@ -1,2 +1,2 @@
-<h1 [ngClass]="isAvail? 'avail': 'notavail'"> I am Sub home component </h1>
+<h1 [ngClass]="isAvail? 'avail': 'notavail'"> My name is {{name | uppercase}} I am Sub home component </h1>
 <button *ngFor="let i of item" ngbButton (click)="changeTheHeader()">{{i}}</button>
