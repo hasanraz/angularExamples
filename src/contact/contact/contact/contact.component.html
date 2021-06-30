@@ -1,0 +1,45 @@
+<div class="container">
+    <form [formGroup]="contactForm" (ngSubmit)="submitContact()">
+    <p>
+        <label for="firstName">First Name</label>
+        <input type="text" name="firstName" formControlName="firstName" (change)="resetFirstName()">
+        <span *ngIf="contactForm.controls.firstName.dirty && !contactForm.controls.firstName.valid">First Name is incorrect</span>
+        <span *ngIf="isNotValidFirstName">Please fill the first name</span>
+    </p>
+    <p>
+        <label for="middleName">Middle Name</label>
+        <input type="text" name="middleName" formControlName="middleName">
+    </p>
+    <p>
+        <label for="lastName">Last Name</label>
+        <input type="text" name="lastName" formControlName="lastName">
+    </p>
+    <p>
+        <label for="email">Email</label>
+        <input type="text" formControlName="email" [ngClass]="{'has-error': contactForm.controls.email.dirty && contactForm.controls.email.invalid}">
+        <span *ngIf="contactForm.controls.email.dirty && !contactForm.controls.email.valid">Email is incorrect</span>
+    </p>
+    <p>
+        <label for="phone">Phone Number</label>
+        <input type="text" formControlName="phone">
+    </p>
+    <p>
+        <label for="gender">Gender</label>
+        <input type="radio" value="male" formControlName="gender">
+        <input type="radio" value="female" formControlName="gender">
+    </p>
+    <p>
+        <label for="country">Country</label>
+        <select name="country" formControlName="country">
+            <option [ngValue]="count" *ngFor="let count of countries">
+            {{count}}
+            </option>
+        </select>
+    </p>
+    <p>
+    <button type="submit">Submit</button>
+    </p>
+    
+    </form>
+
+</div>

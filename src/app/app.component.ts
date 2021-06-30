@@ -1,14 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
-  title = 'Avengers';
+export class AppComponent implements OnInit {
+  title = 'modApp';
 
-  public getTitle() {
-    return this.title;
+  constructor(private router: Router) {
+
+  }
+
+  ngOnInit() {
+    this.navigateToUrl('main');
+  }
+
+
+  navigateToUrl(link: any) {
+    this.router.navigate([link]);
   }
 }
